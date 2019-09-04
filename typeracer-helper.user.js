@@ -2,7 +2,7 @@
 // @name TypeRacer Helper
 // @namespace https://github.com/narze/userscripts
 // @author narze
-// @version 0.0.4
+// @version 0.0.5
 // @description Shortcut keys to Typeracer, no cheats here!
 // @match https://play.typeracer.com/
 // @icon https://play.typeracer.com/favicon.ico
@@ -13,9 +13,9 @@
 const ENTER = 13;
 
 document.onkeypress = function (e) {
-  let char = e.charCode;
+  let key = e.keyCode;
 
-  if (char == ENTER) {
+  if (key == ENTER) {
     document.querySelector('.raceAgainLink').click();
   }
 }
