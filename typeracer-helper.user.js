@@ -2,9 +2,10 @@
 // @name TypeRacer Helper
 // @namespace https://github.com/narze/userscripts
 // @author narze
-// @version 0.0.3
+// @version 0.0.4
 // @description Shortcut keys to Typeracer, no cheats here!
 // @match https://play.typeracer.com/
+// @icon https://play.typeracer.com/favicon.ico
 // @downloadURL  https://github.com/narze/userscripts/raw/master/typeracer-helper.user.js
 // @grant none
 // ==/UserScript==
