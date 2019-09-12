@@ -1,9 +1,12 @@
 /* ==UserStyle==
 @name           TypeRacer Hide Typed Words
-@namespace      github.com/narze/userstyles
-@version        0.1.0
+@namespace      github.com/narze/userscripts
+@version        0.1.1
 @description    Hide typed words, make you less distrcted
-@author         @narze
+@author         narze
+@homepageURL    https://github.com/narze/userscripts
+@updateURL      https://github.com/narze/userscripts/raw/master/userstyles/typeracer.user.css
+@license        MIT
 ==/UserStyle== */
 
 @-moz-document domain("typeracer.com") {
