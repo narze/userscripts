@@ -1,0 +1,17 @@
+/* ==UserStyle==
+@name           TypeRacer Hide Typed Words
+@namespace      github.com/narze/userstyles
+@version        0.1.0
+@description    Hide typed words, make you less distrcted
+@author         @narze
+==/UserStyle== */
+
+@-moz-document domain("typeracer.com") {
+  table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td > div > div::first-letter {
+    color: #999999;
+  }
+
+  table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td > div > div > span:nth-child(1) {
+    color: rgba(153, 153, 153, 0.1);
+  }
+}
