@@ -1,0 +1,20 @@
+/* ==UserStyle==
+@name           10FastFingers Hide Typed Words
+@namespace      github.com/narze/userscripts
+@version        0.1.0
+@description    Hide typed words, make you less distrcted
+@author         narze
+@homepageURL    https://github.com/narze/userscripts
+@updateURL      https://github.com/narze/userscripts/raw/master/userstyles/10fastfingers.user.css
+@license        MIT
+==/UserStyle== */
+
+@-moz-document domain("10fastfingers.com") {
+  #reload-box #words span.correct, #reload-box #words span.wrong {
+      color: rgba(153, 153, 153, 0.1);
+  }
+
+  #reload-box #words span.highlight, #reload-box #words span.highlight-wrong {
+      background: #5CB85C;
+  }
+}
