@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           10FastFingers Hide Typed Words
 @namespace      github.com/narze/userscripts
-@version        0.2.0
+@version        0.2.1
 @description    Hide typed words, make you less distrcted
 @author         narze
 @homepageURL    https://github.com/narze/userscripts
@@ -14,6 +14,7 @@
 @-moz-document domain("10fastfingers.com") {
   #reload-box #words span.correct,
   #reload-box #words span.wrong {
+    color: rgba(153, 153, 153, 0.0);
     background: none !important;
     -webkit-animation-name: fadeOut;
     -webkit-animation-duration: 0.2s;
@@ -26,6 +27,7 @@
     #reload-box #words span.correct + span + span,
     #reload-box #words span.wrong + span,
     #reload-box #words span.wrong + span + span {
+      color: rgba(153, 153, 153, 0.0);
       -webkit-animation-name: fadeOut;
       -webkit-animation-duration: 0.5s;
       animation-name: fadeOut;
