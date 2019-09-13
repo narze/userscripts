@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           TypeRacer Hide Typed Words
 @namespace      github.com/narze/userscripts
-@version        0.1.1
+@version        0.1.2
 @description    Hide typed words, make you less distrcted
 @author         narze
 @homepageURL    https://github.com/narze/userscripts
@@ -10,11 +10,12 @@
 ==/UserStyle== */
 
 @-moz-document domain("typeracer.com") {
-  table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td > div > div::first-letter {
-    color: #999999;
+  table > tbody > tr:nth-child(2) > td > table.inputPanel > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td > div > div > span:nth-child(1) {
+    color: rgba(153, 153, 153, 0.1);
   }
 
-  table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td > div > div > span:nth-child(1) {
-    color: rgba(153, 153, 153, 0.1);
+  /* Prevent hiding out first letter of the text */
+  table > tbody > tr:nth-child(2) > td > table.inputPanel > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td > div > div::first-letter {
+    color: #446666;
   }
 }
