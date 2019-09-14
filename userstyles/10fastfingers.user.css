@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           10FastFingers Hide Typed Words
 @namespace      github.com/narze/userscripts
-@version        0.2.2
+@version        0.2.3
 @description    Hide typed words, make you less distrcted
 @author         narze
 @homepageURL    https://github.com/narze/userscripts
@@ -11,14 +11,12 @@
 @var            checkbox lookAheadMode "Hide next word" 0
 ==/UserStyle== */
 @-moz-document domain("10fastfingers.com") {
-  #reload-box #words span.correct,
+  #reload-box #words span.correct {
+    color: #00800022 !important;
+  }
+
   #reload-box #words span.wrong {
-    color: rgba(153, 153, 153, 0.0);
-    background: none !important;
-    -webkit-animation-name: fadeOut;
-    -webkit-animation-duration: 0.2s;
-    animation-name: fadeOut;
-    animation-duration: 0.2s;
+    color: #FF000022 !important;
   }
 
   if lookAheadMode {
