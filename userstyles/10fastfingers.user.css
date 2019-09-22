@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           10FastFingers Hide Typed Words
 @namespace      github.com/narze/userscripts
-@version        0.2.3
+@version        0.3.0
 @description    Hide typed words, make you less distrcted
 @author         narze
 @homepageURL    https://github.com/narze/userscripts
@@ -30,12 +30,18 @@
       animation-name: fadeOut;
       animation-duration: 0.5s;
     }
+
+    #reload-box #words span.highlight + span + span,
+    #reload-box #words span.highlight-wrong + span + span {
+      border: solid 3px #5CB85C;
+      border-radius: 5px;
+    }
   }
 
   #reload-box #words span.highlight,
   #reload-box #words span.highlight-wrong {
     if lookAheadMode {
-      background: #ffbb00;
+      background: #ffbb0066;
     }
     else {
       background: #5CB85C;
