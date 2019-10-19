@@ -33,51 +33,52 @@ var body = document.querySelector('body')
           // create an observer instance
 //          window.xx = target;
   //        console.log(target)
-          target.onkeydown = function(e) {
-//            console.log('typed')
-          //var observer = new MutationObserver(function(mutations) {
+          target.onkeyup = function(e) {
+            setTimeout(function() {
+               var textBody = document.querySelector("table > tbody > tr:nth-child(2) > td > table.inputPanel > tbody > tr:nth-child(1) > td > table > tbody")
+              textBody.parentNode.style.position = 'relative'
 
-            var textBody = document.querySelector("table > tbody > tr:nth-child(2) > td > table.inputPanel > tbody > tr:nth-child(1) > td > table > tbody")
-            textBody.parentNode.style.position = 'relative'
+              var textBodyClone = textBody.cloneNode(true)
+              textBodyClone.className += " TRHelperTextMask"
+              textBodyClone.style.position = 'absolute'
+              textBodyClone.style.top = '0'
 
-            var textBodyClone = textBody.cloneNode(true)
-            textBodyClone.className += " TRHelperTextMask"
-            textBodyClone.style.position = 'absolute'
-            textBodyClone.style.top = '0'
+              var mask = "#fafafa"
 
-            var mask = "rgba(0,0,0,1)"
+              textBodyClone.querySelector('tr:nth-child(1) > td > div > div > span:nth-last-child(2)').style.backgroundColor = mask
+              textBodyClone.querySelector('tr:nth-child(1) > td > div > div > span:nth-last-child(2)').style.color = mask
 
-            textBodyClone.querySelector('tr:nth-child(1) > td > div > div > span:nth-last-child(2)').style.backgroundColor = 'red'
-            textBodyClone.querySelector('tr:nth-child(1) > td > div > div > span:nth-last-child(2)').style.color = 'red'
+              var t = textBodyClone.querySelector('tr:nth-child(1) > td > div > div > span:last-child')
 
-            var t = textBodyClone.querySelector('tr:nth-child(1) > td > div > div > span:last-child')
+              var textContent = t.textContent;
+              var wordIndex = textContent.indexOf(' ', 1);
+              var nextWordIndex = textContent.indexOf(' ', wordIndex + 1);
+              var lookAheadChars = nextWordIndex + 1;
+              console.log(lookAheadChars)
+              var textToHide = textContent.slice(0, lookAheadChars)
+              var textRemaining = textContent.slice(lookAheadChars)
 
-            var textContent = t.textContent;
-            var wordIndex = textContent.indexOf(' ', 1);
-            var nextWordIndex = textContent.indexOf(' ', wordIndex + 1);
-            var lookAheadChars = nextWordIndex + 1;
-            console.log(lookAheadChars)
-            var textToHide = textContent.slice(0, lookAheadChars)
-            var textRemaining = textContent.slice(lookAheadChars)
+              var span = document.createElement("span");
+              var spanHide = document.createElement("span")
+              var spanRemaining = document.createElement("span");
 
-            var span = document.createElement("span");
-            var spanHide = document.createElement("span")
-            var spanRemaining = document.createElement("span");
+              spanHide.style.backgroundColor = mask
+              spanHide.style.color = mask
+              spanHide.appendChild(document.createTextNode(textToHide))
+              spanRemaining.appendChild(document.createTextNode(textRemaining))
+              spanHide.style.color = 'transparent'
 
-            spanHide.style.backgroundColor = mask
-            spanHide.style.color = mask
-            spanHide.appendChild(document.createTextNode(textToHide))
-            spanRemaining.appendChild(document.createTextNode(textRemaining))
-            span.appendChild(spanHide)
-            span.appendChild(spanRemaining)
-            t.parentNode.replaceChild(span, t)
+              span.appendChild(spanHide)
+              span.appendChild(spanRemaining)
+              t.parentNode.replaceChild(span, t)
 
-            var existingTextMask = document.querySelector("table > tbody > tr:nth-child(2) > td > table.inputPanel > tbody > tr:nth-child(1) > td > table > tbody.TRHelperTextMask")
-            if (existingTextMask) {
-              textBody.parentNode.replaceChild(textBodyClone, existingTextMask)
-            } else {
-              textBody.parentNode.appendChild(textBodyClone)
-            }
+              var existingTextMask = document.querySelector("table > tbody > tr:nth-child(2) > td > table.inputPanel > tbody > tr:nth-child(1) > td > table > tbody.TRHelperTextMask")
+              if (existingTextMask) {
+                textBody.parentNode.replaceChild(textBodyClone, existingTextMask)
+              } else {
+                textBody.parentNode.appendChild(textBodyClone)
+              }
+            }, 50)
           }
           // configuration of the observer:
           //var config = { attributes: true, childList: true, characterData: true };
