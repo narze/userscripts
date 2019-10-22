@@ -1,21 +1,33 @@
 /* ==UserStyle==
 @name           TypeRacer Hide Typed Words
 @namespace      github.com/narze/userscripts
-@version        0.1.2
+@version        0.2.0
 @description    Hide typed words, make you less distrcted
 @author         narze
 @homepageURL    https://github.com/narze/userscripts
 @updateURL      https://github.com/narze/userscripts/raw/master/userstyles/typeracer.user.css
 @license        MIT
+@preprocessor   stylus
+@var            number lookAheadFadeTime "Fade time to hide next word (Milliseconds)" 500
 ==/UserStyle== */
 
+/* NOTE: Use with typeracer-helper.user.js */
+
 @-moz-document domain("typeracer.com") {
-  table > tbody > tr:nth-child(2) > td > table.inputPanel > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td > div > div > span:nth-child(1) {
-    color: rgba(153, 153, 153, 0.1);
+  .typedWords {
+    color: #f0f0f0;
   }
 
-  /* Prevent hiding out first letter of the text */
-  table > tbody > tr:nth-child(2) > td > table.inputPanel > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td > div > div::first-letter {
-    color: #446666;
+  .fadeOut {
+    background-color: #fafafa;
+    color: #fafafa;
+    -webkit-animation-name: fadeOutAnimation;
+    -webkit-animation-duration: lookAheadFadeTime ms;
+    animation-name: fadeOutAnimation;
+    animation-duration: lookAheadFadeTime ms
   }
+
+  @-webkit-keyframes fadeOutAnimation { from { color: #446666; } to { color: #fafafa; } }
+
+  @keyframes fadeOutAnimation { from { color: #446666; } to { color: #fafafa; } }
 }
