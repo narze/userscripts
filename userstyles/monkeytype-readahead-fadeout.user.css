@@ -1,0 +1,62 @@
+/* ==UserStyle==
+@name           Monkeytype Read Ahead Fadeout
+@namespace      github.com/narze/userscripts
+@version        0.1.0
+@description    Read ahead but with fade out time
+@author         narze
+@homepageURL    https://github.com/narze/userscripts
+@updateURL      https://github.com/narze/userscripts/raw/master/userstyles/monkeytype-readahead-fadeout.user.css
+@license        MIT
+@preprocessor   stylus
+@var            select readAheadMode "Read Ahead Mode" ["Easy", "Normal", "Hard"]
+@var            number readAheadFadeTime "Fade time to hide next word (Milliseconds)" 500
+==/UserStyle== */
+@-moz-document domain("monkeytype.com") {
+  if readAheadMode == Easy||readAheadMode == Normal||readAheadMode == Hard {
+    #words .word.active:nth-of-type(n + 2) {
+      color: transparent;
+      -webkit-animation-name: fadeOut;
+      -webkit-animation-duration: readAheadFadeTime ms;
+      animation-name: fadeOut;
+      animation-duration: readAheadFadeTime ms;
+    }
+  }
+
+  if readAheadMode == Normal||readAheadMode == Hard {
+    #words .word.active:nth-of-type(n + 2) + .word {
+      color: transparent;
+      -webkit-animation-name: fadeOut;
+      -webkit-animation-duration: readAheadFadeTime ms;
+      animation-name: fadeOut;
+      animation-duration: readAheadFadeTime ms;
+    }
+  }
+
+  if readAheadMode == Hard {
+    #words .word.active:nth-of-type(n + 2) + .word + .word {
+      color: transparent;
+      -webkit-animation-name: fadeOut;
+      -webkit-animation-duration: readAheadFadeTime ms;
+      animation-name: fadeOut;
+      animation-duration: readAheadFadeTime ms;
+    }
+  }
+
+  @-webkit-keyframes fadeOut {
+    from {
+      color: var(--sub-color);
+    }
+    to {
+      color: transparent;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      color: var(--sub-color);
+    }
+    to {
+      color: transparent;
+    }
+  }
+}
