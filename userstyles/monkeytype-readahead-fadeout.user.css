@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Monkeytype Read Ahead Fadeout
 @namespace      github.com/narze/userscripts
-@version        0.1.0
+@version        0.1.1
 @description    Read ahead but with fade out time
 @author         narze
 @homepageURL    https://github.com/narze/userscripts
@@ -10,9 +10,10 @@
 @preprocessor   stylus
 @var            select readAheadMode "Read Ahead Mode" ["Easy", "Normal", "Hard"]
 @var            number readAheadFadeTime "Fade time to hide next word (Milliseconds)" 500
+@var            select showFirstLetterMode "Show first letter" ["No", "Yes"]
 ==/UserStyle== */
 @-moz-document domain("monkeytype.com") {
-  if readAheadMode == Easy||readAheadMode == Normal||readAheadMode == Hard {
+  if readAheadMode==Easy||readAheadMode==Normal||readAheadMode==Hard {
     #words .word.active:nth-of-type(n + 2) {
       color: transparent;
       -webkit-animation-name: fadeOut;
@@ -20,9 +21,19 @@
       animation-name: fadeOut;
       animation-duration: readAheadFadeTime ms;
     }
+
+    if showFirstLetterMode==Yes {
+      #words .word.active:nth-of-type(n + 2) letter:nth-of-type(1):not(.correct):not(.incorrect) {
+        color: var(--sub-color);
+        -webkit-animation-name: "";
+        -webkit-animation-duration: 0;
+        animation-name: "";
+        animation-duration: 0;
+      }
+    }
   }
 
-  if readAheadMode == Normal||readAheadMode == Hard {
+  if readAheadMode==Normal||readAheadMode==Hard {
     #words .word.active:nth-of-type(n + 2) + .word {
       color: transparent;
       -webkit-animation-name: fadeOut;
@@ -30,15 +41,35 @@
       animation-name: fadeOut;
       animation-duration: readAheadFadeTime ms;
     }
+
+    if showFirstLetterMode==Yes {
+      #words .word.active:nth-of-type(n + 2) + .word letter:nth-of-type(1):not(.correct):not(.incorrect) {
+        color: var(--sub-color);
+        -webkit-animation-name: "";
+        -webkit-animation-duration: 0;
+        animation-name: "";
+        animation-duration: 0;
+      }
+    }
   }
 
-  if readAheadMode == Hard {
+  if readAheadMode==Hard {
     #words .word.active:nth-of-type(n + 2) + .word + .word {
       color: transparent;
       -webkit-animation-name: fadeOut;
       -webkit-animation-duration: readAheadFadeTime ms;
       animation-name: fadeOut;
       animation-duration: readAheadFadeTime ms;
+    }
+
+    if showFirstLetterMode==Yes {
+      #words .word.active:nth-of-type(n + 2) + .word + .word letter:nth-of-type(1):not(.correct):not(.incorrect) {
+        color: var(--sub-color);
+        -webkit-animation-name: "";
+        -webkit-animation-duration: 0;
+        animation-name: "";
+        animation-duration: 0;
+      }
     }
   }
 
