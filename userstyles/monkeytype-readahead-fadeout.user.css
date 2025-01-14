@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Monkeytype Read Ahead Fadeout
 @namespace      github.com/narze/userscripts
-@version        0.1.1
+@version        0.1.2
 @description    Read ahead but with fade out time
 @author         narze
 @homepageURL    https://github.com/narze/userscripts
@@ -13,6 +13,11 @@
 @var            select showFirstLetterMode "Show first letter" ["No", "Yes"]
 ==/UserStyle== */
 @-moz-document domain("monkeytype.com") {
+  #words .word letter {
+    color: inherit;
+    animation: none;
+  }
+
   if readAheadMode==Easy||readAheadMode==Normal||readAheadMode==Hard {
     #words .word.active:nth-of-type(n + 2) {
       color: transparent;
